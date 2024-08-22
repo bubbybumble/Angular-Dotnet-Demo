@@ -23,7 +23,7 @@ interface subject {
 export class DatagridComponent {
   constructor(private http: HttpClient) {}
   @Input() data: subject[] = [];
-  getData(): void {
+  public getData(): void {
 
 
     this.http.get('http://localhost:5050/api/subjects').pipe(map((data:any) => {
@@ -35,6 +35,17 @@ export class DatagridComponent {
 
     })).subscribe(_ => console.log("data fetched successfully"));
 
+  }
+
+  jsonString = `{"dateOfBirth": "2001-01-01","firstName": "John","middleName": "The","lastName": "Doe","stateOfResidence": "NY"}`;
+  addSubject(){
+    console.log("adding person");
+    this.http.post('http://localhost:5050/api/subjects', this.jsonString,{
+      headers: { 'Content-Type': 'application/json' }
+    }).subscribe(response => {
+      console.log(response);
+    });
+  
   }
 
   async ngAfterViewInit(): Promise<void> {
