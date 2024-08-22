@@ -1,1 +1,33 @@
-<p>datagrid works!</p>
+
+<div class="container mt-5">
+  
+    <h2>Subjects</h2>
+    
+    <table class="table table-striped">
+      <thead>
+          <tr>
+            <td>ID</td>
+            <td>First Name</td>
+            <td>Last Name</td>
+            <td>Middle Name</td>
+            <td>Date of Birth</td>
+            <td>State of Residence</td>
+          </tr>
+      </thead>
+      <tbody>
+        @for (subject of data; track subject.recId){
+            <tr>
+                <td>{{ subject.recId }}</td>
+                <td>{{ subject.firstName }}</td>
+                <td>{{ subject.lastName }}</td>
+                <td>{{ subject.middleName }}</td>
+                <td>{{ subject.dateOfBirth }}</td>
+                <td>{{ subject.stateOfResidence }}</td>
+            </tr>
+        } @empty{
+            <p>No data</p>
+        }
+        
+      </tbody>
+    </table>
+  </div>

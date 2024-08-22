@@ -17,7 +17,7 @@ namespace FRSSoftwareDemoApp.Controllers
         [HttpGet]
         public async Task<IActionResult> GetSubjects()
         {
-           var subjects = await dbContext.Subjects.ToListAsync();
+            var subjects = await dbContext.Subjects.ToListAsync();
             return Ok(subjects);
         }
     }
